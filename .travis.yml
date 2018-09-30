@@ -26,7 +26,7 @@ jobs:
       script: sh run-tests.sh
       
     - stage: publish-docs
-      script: 
+      script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
     
     - stage: test-coverage
