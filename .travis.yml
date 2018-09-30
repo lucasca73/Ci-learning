@@ -2,7 +2,7 @@ jobs:
   include:
     - stage: "Tests"                # naming the Tests stage
       name: "Unit Tests"            # names the first Tests stage job
-      script: ./run-tests.sh
+      script: sh run-tests.sh
     - stage: deploy
       name: "Deploy to GCP"
       script: echo Hello-From-Mars
