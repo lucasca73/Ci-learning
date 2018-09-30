@@ -1,8 +1,25 @@
+
+language: python
+python:
+  - "3.4"
+
+install: 
+  - pip install -r requirements.txt
+
+virtualenv:
+  system_site_packages: true
+
+
+stages:
+  - test
+  - name: publish-docs
+    if: branch = master
+
 jobs:
   include:
     - stage: "Tests"                # naming the Tests stage
       name: "Unit Tests"            # names the first Tests stage job
-      script: python product_microservice/manage.py test
-    - stage: deploy
-      name: "Deploy to GCP"
-      script: echo Hello
+      script: sh run-tests.sh
+    - stage: publish-docs
+      script: 
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
