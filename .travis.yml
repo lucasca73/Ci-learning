@@ -23,7 +23,7 @@ jobs:
   include:
     - stage: "Tests"
       name: "Unit Tests"
-      script: cd product_microservice && tox
+      script: sh run-tests.sh
       
     - stage: publish-docs
       script: 
