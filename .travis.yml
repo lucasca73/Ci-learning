@@ -3,23 +3,34 @@ language: python
 python:
   - "3.4"
 
+cache: pip
+
 install: 
-  - pip install -r requirements.txt
+  - pip install -r product_microservice/requirements/dev.txt
 
 virtualenv:
   system_site_packages: true
-
 
 stages:
   - test
   - name: publish-docs
     if: branch = master
+  - name: test-coverage
+    if: branch = master
+# codecov -t 224fa80b-e102-46b7-bad7-ee6f8a118e39
 
 jobs:
   include:
-    - stage: "Tests"                # naming the Tests stage
-      name: "Unit Tests"            # names the first Tests stage job
+    - stage: "Tests"
+      name: "Unit Tests"
       script: sh run-tests.sh
+      
     - stage: publish-docs
       script: 
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
+    
+    - stage: test-coverage
+      name: "Updating test coverage"
+      script:
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-tests.sh; fi'
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then codecov -t ${CODECOV_TOKEN}; fi'
