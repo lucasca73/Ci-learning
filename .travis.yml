@@ -5,4 +5,4 @@ jobs:
       script: python product_microservice/manage.py test
     - stage: deploy
       name: "Deploy to GCP"
-      script: echo Hello
+      script: echo Hello-From-Mars
