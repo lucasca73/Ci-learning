@@ -1,3 +1,15 @@
+
+language: python
+python:
+  - "3.4"
+
+install: 
+  - pip install -r requirements.txt
+  - pip install .
+
+virtualenv:
+  system_site_packages: true
+
 jobs:
   include:
     - stage: "Tests"                # naming the Tests stage
