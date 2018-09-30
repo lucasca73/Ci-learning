@@ -21,4 +21,5 @@ jobs:
       name: "Unit Tests"            # names the first Tests stage job
       script: sh run-tests.sh
     - stage: publish-docs
-      script: - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
+      script: 
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
