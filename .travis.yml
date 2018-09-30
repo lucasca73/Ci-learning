@@ -9,7 +9,6 @@ install:
 virtualenv:
   system_site_packages: true
 
-
 stages:
   - test
   - name: publish-docs
@@ -17,9 +16,15 @@ stages:
 
 jobs:
   include:
-    - stage: "Tests"                # naming the Tests stage
-      name: "Unit Tests"            # names the first Tests stage job
-      script: sh run-tests.sh
+    - stage: "Tests"
+      name: "Unit Tests"
+      install:
+        - pip install tox
+      env:
+        - TOXENV=django20
+        - TOXENV=coverage
+      script: cd product_microservice && tox
+      
     - stage: publish-docs
       script: 
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
