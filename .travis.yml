@@ -33,4 +33,4 @@ jobs:
       name: "Updating test coverage"
       script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-tests.sh; fi'
-        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then codecov -t ${CODECOV_TOKEN}; fi'
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd product_microservice && codecov -t ${CODECOV_TOKEN}; fi'
