@@ -19,6 +19,7 @@ jobs:
     - stage: "Tests"
       name: "Unit Tests"
       install:
+        - pip install -r requirements.txt
         - pip install tox
       env:
         - TOXENV=django20
