@@ -30,5 +30,7 @@ jobs:
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-pages.sh; fi'
     
     - stage: test-coverage
+      name: "Updating test coverage"
+      script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-tests.sh; fi'
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then codecov -t ${CODECOV_TOKEN}; fi'
