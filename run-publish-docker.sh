@@ -1,4 +1,4 @@
-
+. .env
 # echo ' - Docker image - '
 # echo $PREFIX
 # echo $IMAGE
@@ -53,16 +53,15 @@ echo "version: $version"
 
 docker build -t $PREFIX/$IMAGE:latest -f production.Dockerfile .
 
-git config --global user.name "${GH_NAME}"
-git config --global user.email "${GH_EMAIL}"
-echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+echo "GH_NAME='${GH_NAME}'" >> .envtemp
+echo "GH_EMAIL=${GH_EMAIL}" >> .envtemp
+echo "GH_TOKEN=${GH_TOKEN}" >> .envtemp
+echo "version=${version}" >> .envtemp
+
+docker run --rm -v `pwd`:"/app" -w "/app" --env-file .envtemp python:3 bash -c "sh run-git-tag-version.sh"
+rm -rf .envtemp
 
 # tag it
-git add -A
-git commit -m "version $version"
-git tag -a "$version" -m "version $version"
-git push
-git push --tags
 docker tag $PREFIX/$IMAGE:latest $PREFIX/$IMAGE:$version
 
 # login docker hub

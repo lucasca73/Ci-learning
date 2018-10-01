@@ -2,10 +2,10 @@ image: docker:stable
 
 services:
   - docker:dind
+  - docker:ubuntu
 
 before_script:
   - docker info
-  - apt-get -y update && apt-get -y install git
 
 publish:
   only:
