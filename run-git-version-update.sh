@@ -7,4 +7,4 @@ git add -A
 git commit -m "version $version"
 git tag -a "$version" -m "version $version"
 git push $origin master
-git push --tags
+git push $origin master --tags
