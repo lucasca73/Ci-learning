@@ -1,16 +1,15 @@
 . .env
-echo ' - Docker image - '
-echo $PREFIX
-echo $IMAGE
-echo ' - Github - '
-echo $GH_NAME
-echo $GH_EMAIL
-echo $GH_TOKEN
-echo ' - Docker login - '
-echo $DC_USER
-echo $DC_PASS
-echo ' - - '
-
+# echo ' - Docker image - '
+# echo $PREFIX
+# echo $IMAGE
+# echo ' - Github - '
+# echo $GH_NAME
+# echo $GH_EMAIL
+# echo $GH_TOKEN
+# echo ' - Docker login - '
+# echo $DC_USER
+# echo $DC_PASS
+# echo ' - - '
 
 set -e
 
@@ -70,5 +69,7 @@ docker tag $PREFIX/$IMAGE:latest $PREFIX/$IMAGE:$version
 docker login -u $DC_USER -p $DC_PASS
 
 # push it
-docker push $PREFIX/$IMAGE:latest
-docker push $PREFIX/$IMAGE:$version
+echo 'publishing latest: ${PREFIX}/${IMAGE}:latest'
+docker push '${PREFIX}/${IMAGE}:latest'
+echo 'publishing version: ${PREFIX}/${IMAGE}:${version}'
+docker push '${PREFIX}/${IMAGE}:${version}'
