@@ -5,6 +5,10 @@
 
 ![build status](https://travis-ci.com/lucasca73/Ci-learning.svg?branch=master)
 
+
+<iframe width="100" height="50" src="https://raw.githubusercontent.com/lucasca73/Ci-learning/master/VERSION" frameborder="0"></iframe>
+
+
 Esse repositório está sendo utilizado com o próposito de manter um microserviço associado ao projeto de MDS/EPS, que são materias ministradas na Universidade de Brasília.
 
 
