@@ -89,4 +89,7 @@ local_settings.py
 # Virtualenv
 /env
 .env
+.env*
+*.env*
+*.env
 db.sqlite3
