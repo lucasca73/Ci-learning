@@ -1,4 +1,4 @@
-. .env
+
 # echo ' - Docker image - '
 # echo $PREFIX
 # echo $IMAGE
