@@ -3,6 +3,7 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /code
 
+ADD VERSION .
 ADD ./product_microservice /code
 
 RUN pip install --upgrade pip

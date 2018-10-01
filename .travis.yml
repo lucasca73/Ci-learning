@@ -17,7 +17,9 @@ stages:
     if: branch = master
   - name: test-coverage
     if: branch = master
-# codecov -t 224fa80b-e102-46b7-bad7-ee6f8a118e39
+  - name: docker-image-update
+    if: branch = master
+
 
 jobs:
   include:
@@ -34,3 +36,8 @@ jobs:
       script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-tests.sh; fi'
         - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd product_microservice && codecov -t ${CODECOV_TOKEN}; fi'
+
+    - stage: docker-image-update
+      name: "Updating docker image"
+      script:
+        - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh run-publish-docker.sh; fi'
