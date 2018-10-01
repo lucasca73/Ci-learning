@@ -69,7 +69,7 @@ docker tag $PREFIX/$IMAGE:latest $PREFIX/$IMAGE:$version
 docker login -u $DC_USER -p $DC_PASS
 
 # push it
-echo 'publishing latest: ${PREFIX}/${IMAGE}:latest'
+echo "publishing latest: ${PREFIX}/${IMAGE}:latest"
 docker push ${PREFIX}/${IMAGE}:latest
-echo 'publishing version: ${PREFIX}/${IMAGE}:${version}'
+echo "publishing version: ${PREFIX}/${IMAGE}:${version}"
 docker push ${PREFIX}/${IMAGE}:${version}
