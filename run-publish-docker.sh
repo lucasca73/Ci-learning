@@ -57,6 +57,7 @@ echo "GH_NAME='${GH_NAME}'" >> .envtemp
 echo "GH_EMAIL=${GH_EMAIL}" >> .envtemp
 echo "GH_TOKEN=${GH_TOKEN}" >> .envtemp
 echo "version=${version}" >> .envtemp
+echo "origin=${origin}" >> .envtemp
 
 docker run --rm -v `pwd`:"/app" -w "/app" --env-file .envtemp python:3 bash -c "sh run-git-version-update.sh"
 rm -rf .envtemp

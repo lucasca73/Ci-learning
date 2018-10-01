@@ -6,5 +6,5 @@ echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
 git add -A
 git commit -m "version $version"
 git tag -a "$version" -m "version $version"
-git push
+git push $origin master
 git push --tags
