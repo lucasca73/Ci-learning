@@ -6,10 +6,10 @@ services:
 before_script:
   - docker info
 
-build:
+publish:
   only:
-    refs:
     - master
+    - merge-requests
   stage: build
   script:
     - sh run-publish-docker.sh
