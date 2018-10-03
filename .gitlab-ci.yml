@@ -31,7 +31,7 @@ deploy production:
     refs:
       - master
     variables:
-      - $CI_COMMIT_TAG =~ ^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$
+      - $CI_COMMIT_TAG =~ /^*.*.*/
   script:
     - echo Hello deploy PRODUCTION
 
