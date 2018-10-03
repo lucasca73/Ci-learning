@@ -1,5 +1,10 @@
 image: docker:stable
 
+stages:
+  - test
+  - publish
+  - deploy
+
 services:
   - docker:dind
   - docker:python:3
@@ -7,10 +12,32 @@ services:
 before_script:
   - docker info
 
+unit test:
+  stage: test
+  script:
+    - echo HELLO TESTS
+
+deploy staging:
+  stage: deploy
+  only:
+    - dev
+    - tags
+  script:
+    - echo Hello deploy stag
+
+deploy production:
+  stage: deploy
+  only:
+    - master
+    - tags
+  script:
+    - echo Hello deploy PRODUCTION
+
 publish:
   only:
     - master
     - merge-requests
   stage: build
   script:
-    - sh run-publish-docker.sh
+    - echo Hello PUBLISH
+    # - sh run-publish-docker.sh
