@@ -28,8 +28,10 @@ deploy staging:
 deploy production:
   stage: deploy
   only:
-    - master
-    - tags
+    refs:
+      - master
+    variables:
+      - $CI_COMMIT_TAG =~ ^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$
   script:
     - echo Hello deploy PRODUCTION
 
