@@ -30,8 +30,11 @@ deploy staging:
 deploy production:
   stage: deploy
   only:
-    - master
-    - tags
+    refs:
+      - master
+      - tags
+    variables:
+      - $CI_COMMIT_TAG =~ /^*/
   except:
     - dev
   script:
