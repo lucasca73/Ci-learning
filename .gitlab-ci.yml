@@ -37,7 +37,7 @@ publish:
   only:
     - master
     - merge-requests
-  stage: build
+  stage: publish
   script:
     - echo Hello PUBLISH
     # - sh run-publish-docker.sh
