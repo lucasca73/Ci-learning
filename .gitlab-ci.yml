@@ -1,16 +1,8 @@
-image: docker:stable
+image: python:3
 
 stages:
   - test
-  - publish
   - deploy
-
-services:
-  - docker:dind
-  - docker:python:3
-
-before_script:
-  - docker info
 
 unit test:
   stage: test
@@ -32,12 +24,4 @@ deploy production:
     - $CI_COMMIT_TAG
   script:
     - echo Hello deploy PRODUCTION
-
-publish:
-  only:
-    - master
-    - merge-requests
-  stage: publish
-  script:
-    - echo Hello PUBLISH
-    # - sh run-publish-docker.sh
+    - echo $CI_COMMIT_TAG
