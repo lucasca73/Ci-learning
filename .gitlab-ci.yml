@@ -13,7 +13,6 @@ deploy staging:
   stage: deploy
   only:
     - dev
-    - $CI_COMMIT_TAG
   script:
     - echo Hello deploy stag
 
@@ -28,16 +27,7 @@ deploy production:
 deploy production2:
   stage: deploy
   only:
-    - $CI_COMMIT_TAG =~ /*.*.*/
-  script:
-    - echo Hello deploy PRODUCTION
-    - echo $CI_COMMIT_TAG
-
-
-deploy production3:
-  stage: deploy
-  only:
-    - $CI_COMMIT_TAG != ''
+    - tags
   script:
     - echo Hello deploy PRODUCTION
     - echo $CI_COMMIT_TAG
