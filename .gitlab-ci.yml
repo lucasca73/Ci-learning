@@ -22,19 +22,14 @@ deploy staging:
   only:
     - dev
     - $CI_COMMIT_TAG
-  except:
-    - master
   script:
     - echo Hello deploy stag
 
 deploy production:
   stage: deploy
   only:
-    refs:
-      - master
-      - $CI_COMMIT_TAG
-  except:
-    - dev
+    - master
+    - $CI_COMMIT_TAG
   script:
     - echo Hello deploy PRODUCTION
 
